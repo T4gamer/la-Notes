@@ -23,7 +23,11 @@ android {
             useSupportLibrary true
         }
     }
-
+    applicationVariants.all { variant ->
+        variant.addJavaSourceFoldersToModel(
+                new File(buildDir, "generated/ksp/${variant.name}/kotlin")
+        )
+    }
     buildTypes {
         release {
             minifyEnabled false

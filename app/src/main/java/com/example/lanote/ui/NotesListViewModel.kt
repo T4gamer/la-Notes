@@ -38,10 +38,16 @@ class NotesListViewModel @Inject constructor (
         }
     }
 
-    fun addNote(title:String) {
+    fun addNote(title:String , content:String) {
         viewModelScope.launch {
-            val note = Note(Title = title, Content = "")
+            val note = Note(Title = title, Content = content)
             db.dao.addNote(note)
+        }
+    }
+
+    fun updateNote(note:Note){
+        viewModelScope.launch {
+            db.dao.updateNote(note)
         }
     }
 
